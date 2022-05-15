@@ -3,8 +3,22 @@
  */
 
 $(document).ready(function() {
-	loadMain();
+	loadAcceuil();
 });
+
+function loadAcceuil(){
+	$("#Main").load("Acceuil.html", function() {
+		$("#BTEvenements").click(function() {
+			loadEvenements();
+		});
+	});
+	}
+
+function loadEvenements(){
+	$("#Main").empty();
+	$("#Main").load("Evenements.html", function() {
+	});
+	}
 
 function loadMain() {
 	$("#Main").load("Main.html", function() {

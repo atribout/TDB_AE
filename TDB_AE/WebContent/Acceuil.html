@@ -1,75 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/style.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">AE ENSEEIHT</span>
-    </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Acceuil </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-box' ></i>
-            <span class="links_name">Evenements</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-pie-chart-alt-2' ></i>
-            <span class="links_name">Reservation</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Mon Compte</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="#">
-            <i class='bx bx-log-out'></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-  </div>
-  <section class="home-section">
-    <nav>
-      <div class="sidebar-button">
-        <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Tableau de Bord</span>
-      </div>
-      <div class="profile-details">
-        <!--<img src="images/profile.jpg" alt="">-->
-        <span class="admin_name">Adrien Narkiewicz</span>
-        <i class='bx bx-chevron-down' ></i>
-      </div>
-    </nav>
-
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style/style.css" type="text/css">
+		<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+		<title>Acceuil</title>
+	</head>
+	<body>
+	
+	<section class="home-section">
+    
     <div class="home-content">
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
             <div class="box-topic">FOY</div>
-            
           </div>
           <img class="clubs_logo" src="style/foy_logo.png" alt="">
         </div>
@@ -185,17 +130,16 @@
   </section>
 
   <script>
-   let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
-sidebarBtn.onclick = function() {
-  sidebar.classList.toggle("active");
-  if(sidebar.classList.contains("active")){
-  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-}else
-  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-}
+   	let sidebar = document.querySelector(".sidebar");
+	let sidebarBtn = document.querySelector(".sidebarBtn");
+	sidebarBtn.onclick = function() {
+	sidebar.classList.toggle("active");
+	if(sidebar.classList.contains("active")){
+	  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+	}else
+	  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+	}
  </script>
-
-</body>
+		
+	</body>
 </html>
-
