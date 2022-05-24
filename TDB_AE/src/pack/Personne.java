@@ -5,18 +5,21 @@ import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
-public class Eleve {
+public class Personne {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
-
+	@Id
+	private String login;
+	
+	private String Mdp;
+	
     private String nom;
+    
     private String prenom;
+    
     private int annee;
-
-    private String role;
-
+    
+    private String mail;
+    
     @ManyToMany
     private Collection<Association> associations;
 
@@ -26,13 +29,16 @@ public class Eleve {
     @ManyToMany(mappedBy= "acces")
     private Collection<Salle> salles_accessibles;
     
+    @OneToMany(mappedBy="owner", fetch = FetchType.EAGER)
+	private Adresse adresse;
+    
+    public Personne(){};
 
-    public Eleve(){};
-
-    public Eleve(String nom, String prenom, int annee){
+    public Personne(String nom, String prenom, int annee, String mail){
         this.nom = nom;
         this.prenom = prenom;
         this.annee = annee;
+        this.mail = mail;
     }
 
     public void setNom(String nom){
@@ -47,7 +53,7 @@ public class Eleve {
         this.prenom = prenom;
     }
 
-    public String getPrenom(){
+    public String Prenom(){
         return this.prenom;
     }
 
@@ -58,14 +64,6 @@ public class Eleve {
     public int getAnnee(){
         return this.annee;
     }
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public Collection<Evenement> getEvenements() {
 		return evenements;
@@ -89,6 +87,38 @@ public class Eleve {
 
 	public void setSalles_accessibles(Collection<Salle> salles_accessibles) {
 		this.salles_accessibles = salles_accessibles;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getMdp() {
+		return Mdp;
+	}
+
+	public void setMdp(String mdp) {
+		Mdp = mdp;
 	}
 
 
