@@ -20,7 +20,7 @@ public class Evenement {
     private Time time;
 
     @ManyToMany
-    Collection<Eleve> participants ;
+    Collection<Personne> participants ;
 
     @ManyToMany
     Collection<Association> asso_organisateur;

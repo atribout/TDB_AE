@@ -18,42 +18,57 @@ public class Facade {
 	@PersistenceContext
 	EntityManager em;
 	
+	
 	@POST
 	@Path("/addperson")
     @Consumes({ "application/json" })
-	public void addPerson(Person p) {
-		System.out.println("coucou");
-		em.persist(p);
+	public void addPerson(Personne p) {
+		String mail = p.getMail();
+		String login = p.getLogin();
+		Collection<Personne> ps = em.createQuery("select * from Personne where mail = ? or login = ?",Personne.class)
+									.setParameter(1,mail).setParameter(2,login).getResultList();
+		if (ps == null) {
+			em.persist(p);
+		} else {
+			//throw Exception
+		}
 	}
 	
+	//Ajouter une adresse à une personne
 	@POST
-	@Path("/addaddress")
+	@Path("/putaddress")
     @Consumes({ "application/json" })
-	public void addAddress(Address a) {
+	public void putAddress(String login, String rue,String ville,int adrPost, int num) {
+		Adresse a = new Adresse(num,rue,ville,adrPost);
+		Personne p = em.find(Personne.class, login);
 		em.persist(a);
+		p.setAdresse(a);
+		em.merge(p);	
 	}
+	
+	
 	
 	@GET
 	@Path("/listpersons")
     @Produces({ "application/json" })
-	public Collection<Person> listPersons() {
-		return em.createQuery("from Person", Person.class).getResultList();
+	public Collection<Personne> listePersonnes() {
+		return em.createQuery("FROM Personne", Personne.class).getResultList();
 	}
 	
 	@GET
 	@Path("/listaddresses")
     @Produces({ "application/json" })
-	public Collection<Address> listAddress() {
-		return em.createQuery("from Address", Address.class).getResultList();	
+	public Collection<Adresse> listeAdresses() {
+		return em.createQuery("FROM Adresse", Adresse.class).getResultList();	
 	}
 	
 	@POST
 	@Path("/associate")
     @Consumes({ "application/json" })
 	public void associate(Association as) {
-		System.out.println(as.getPersonId() +" "+ as.getAddressId());
-		Person p = em.find(Person.class, as.getPersonId());
-		Address a = em.find(Address.class, as.getAddressId());
+		System.out.println(as.getPersonId() +" "+ as.getAdressId());
+		Personne p = em.find(Personne.class, as.getPersonId());
+		Adresse a = em.find(Adresse.class, as.getAdressId());
 		a.setOwner(p);
 	}
 	

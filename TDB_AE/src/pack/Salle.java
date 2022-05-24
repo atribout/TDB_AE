@@ -23,7 +23,7 @@ public class Salle {
 	
 	
 	@ManyToMany
-	private Collection<Eleve> accees;
+	private Collection<Personne> accees;
 	
 	public String getBatiment() {
 		return batiment;
@@ -61,10 +61,10 @@ public class Salle {
 	public void setActivite(Collection<Evenement> activite) {
 		this.activite = activite;
 	}
-	public Collection<Eleve> getAccees() {
+	public Collection<Personne> getAccees() {
 		return accees;
 	}
-	public void setAccees(Collection<Eleve> accees) {
+	public void setAccees(Collection<Personne> accees) {
 		this.accees = accees;
 	}
 	public boolean isAccees_demandé() {

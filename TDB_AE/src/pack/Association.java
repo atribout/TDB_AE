@@ -15,16 +15,16 @@ public class Association {
 	//Bureau bureau;
 	//Un seul role de president par éleve
 	@OneToOne
-	private Eleve president;
+	private Personne president;
 	
 	@OneToOne
-	private Eleve tresorier;
+	private Personne tresorier;
 	
 	@ManyToMany
-	private List<Eleve> bureau;
+	private List<Personne> bureau;
 	
 	@ManyToMany
-	private List<Eleve> membres;
+	private List<Personne> membres;
 	
 	@ManyToMany(mappedBy = "asso_organisatrice")
 	private Collection<Evenement> events;
@@ -37,35 +37,35 @@ public class Association {
 		this.description = description;
 	}
 
-	public Eleve getPresident() {
+	public Personne getPresident() {
 		return president;
 	}
 
-	public void setPresident(Eleve president) {
+	public void setPresident(Personne president) {
 		this.president = president;
 	}
 
-	public Eleve getTresorier() {
+	public Personne getTresorier() {
 		return tresorier;
 	}
 
-	public void setTresorier(Eleve tresorier) {
+	public void setTresorier(Personne tresorier) {
 		this.tresorier = tresorier;
 	}
 
-	public List<Eleve> getBureau() {
+	public List<Personne> getBureau() {
 		return bureau;
 	}
 
-	public void setBureau(List<Eleve> bureau) {
+	public void setBureau(List<Personne> bureau) {
 		this.bureau = bureau;
 	}
 
-	public List<Eleve> getMembres() {
+	public List<Personne> getMembres() {
 		return membres;
 	}
 
-	public void setMembres(List<Eleve> membres) {
+	public void setMembres(List<Personne> membres) {
 		this.membres = membres;
 	}
 
