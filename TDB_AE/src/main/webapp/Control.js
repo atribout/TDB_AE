@@ -3,22 +3,56 @@
  */
 
 $(document).ready(function() {
-	loadAcceuil();
+	loadMenu();
+	loadAccueil();
 });
 
-function loadAcceuil(){
-	$("#Main").load("Acceuil.html", function() {
+function loadMenu() {
+	$("#Menu").load("menu.html", function() {
+		$("#BTAccueil").click(function() {
+			loadAccueil();
+		});
 		$("#BTEvenements").click(function() {
 			loadEvenements();
 		});
+		$("#BTForum").click(function() {
+			loadForum();
+		});
+		$("#BTReservation").click(function() {
+			loadReservation();
+		});
 	});
-	}
+}
 
-function loadEvenements(){
-	$("#Main").empty();
-	$("#Main").load("Evenements.html", function() {
+function loadNavigation(HeadTitle) {
+	$("#Navigation").load("navigation.html", function() {
+		$("#HeadTitle").text(HeadTitle);
 	});
-	}
+}
+
+function loadAccueil() {
+	$("#Page").load("accueil.html", function() {
+	});
+	loadNavigation("Accueil");
+}
+
+function loadEvenements() {
+	$("#Page").load("evenements.html", function() {
+	});
+	loadNavigation("Evenements");
+}
+
+function loadForum() {
+	$("#Page").load("forum.html", function() {
+	});
+	loadNavigation("Forum");
+}
+
+function loadReservation() {
+	$("#Page").load("reservation.html", function() {
+	});
+	loadNavigation("Réservation");
+}
 
 function loadMain() {
 	$("#Main").load("Main.html", function() {
