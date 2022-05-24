@@ -11,10 +11,11 @@
         <class>pack.Person</class>
         <class>pack.Address</class>
         
-        <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+        <properties> 
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.show_sql" value="true" />
+            
         </properties>
     </persistence-unit>
 </persistence>

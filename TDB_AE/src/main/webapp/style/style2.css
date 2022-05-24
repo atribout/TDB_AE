@@ -13,9 +13,11 @@
   background: #e37a0a;
   transition: all 0.5s ease;
 }
+
 .sidebar.active{
   width: 60px;
 }
+
 .sidebar .logo-details{
   height: 80px;
   display: flex;
@@ -33,6 +35,32 @@
   font-size: 24px;
   font-weight: 500;
 }
+
+.sidebar .btn-group .button {
+  background-color: #e37a0a; /* Orange */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  width:240px;
+  display: block;
+}
+
+.sidebar .btn-group .button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.sidebar .btn-group .button.selected {
+  background-color: #e3520a;
+}
+
+.sidebar .btn-group .button:hover {
+  background-color: #e3610a;
+}
+
 .sidebar .nav-links{
   margin-top: 10px;
 }
@@ -41,7 +69,8 @@
   list-style: none;
   height: 50px;
 }
-.sidebar .nav-links li a{
+/*
+.button {
   height: 100%;
   width: 100%;
   display: flex;
@@ -49,19 +78,20 @@
   text-decoration: none;
   transition: all 0.4s ease;
 }
-.sidebar .nav-links li a.active{
-  background: #e3520a;
-}
-.sidebar .nav-links li a:hover{
-  background: #e3610a;
-}
+
+.button:hover{
+  background-color: #e3610a;
+} */
+
+/* .sidebar .nav-links li */
+
 .sidebar .nav-links li i{
   min-width: 60px;
   text-align: center;
   font-size: 18px;
   color: #fff;
 }
-.sidebar .nav-links li a .links_name{
+.sidebar .nav-links li .button .links_name{
   color: #fff;
   font-size: 15px;
   font-weight: 400;
