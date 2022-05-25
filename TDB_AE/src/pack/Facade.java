@@ -51,25 +51,25 @@ public class Facade {
 	@GET
 	@Path("/listpersons")
     @Produces({ "application/json" })
-	public Collection<Personne> listePersonnes() {
-		return em.createQuery("FROM Personne", Personne.class).getResultList();
+	public Collection<Personne> listePersonnesEvent(int id) {
+		Evenement e = em.find(Evenement.class,id);
+		Collection<Personne> participants = e.getParticipants(); 
+		return participants;
 	}
 	
 	@GET
 	@Path("/listaddresses")
     @Produces({ "application/json" })
-	public Collection<Adresse> listeAdresses() {
-		return em.createQuery("FROM Adresse", Adresse.class).getResultList();	
+	public String getMdp(String login) {
+		Personne p = em.find(Personne.class, login);
+		return p.getMdp();	
 	}
 	
 	@POST
 	@Path("/associate")
     @Consumes({ "application/json" })
-	public void associate(Association as) {
-		System.out.println(as.getPersonId() +" "+ as.getAdressId());
-		Personne p = em.find(Personne.class, as.getPersonId());
-		Adresse a = em.find(Adresse.class, as.getAdressId());
-		a.setOwner(p);
+	public void creerEvent(String login, String association, ) {
+		
 	}
 	
 }

@@ -1,4 +1,4 @@
-package pack;
+package main.java.entities;
 
 import java.util.Collection;
 
