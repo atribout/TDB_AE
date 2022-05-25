@@ -5,7 +5,7 @@
 	<meta charset="ISO-8859-1">
 	<link rel="stylesheet" href="style/style_login.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="login/Control_login.js"></script>
+	<script src="login/Control_login2.js"></script>
 </head>
 
 <body>
@@ -14,10 +14,10 @@
 <div class="title-page">
 	<h1>TDB AEn7</h1>
 </div>
-  <div class="form">
+  <div class="form" action="servlet1">
     <form class="register-form">
-      <input id="create-username" type="text" placeholder="username"/>
-      <input id="create-password" type="text" placeholder="password"/>
+      <input id="create-username" name="name" type="text" placeholder="username"/>
+      <input id="create-password" name="password" type="text" placeholder="password"/>
       <input id="create-email" type="text" placeholder="email address"/>
       <button name="create-button" type="button" id="BTRegisterUtilisateur">create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>

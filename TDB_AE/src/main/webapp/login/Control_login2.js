@@ -19,7 +19,7 @@ $(document).ready(function() {
 			console.log("Current Password " + account[1]);
 			console.log("Logged In");
 		} else if (loginUsernameEntry == loginUsernameAdmin && loginPasswordEntry == loginPasswordAdmin) {
-			
+				location.replace("index.html");
 		} else {
 			console.log("Attempted Username " + loginUsernameEntry);
 			console.log("Attempted Password " + loginPasswordEntry);
