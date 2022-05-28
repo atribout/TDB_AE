@@ -17,6 +17,13 @@ public class Facade {
 	
 	@PersistenceContext
 	EntityManager em;
+
+	@POST
+	@Path("/addevent")
+    @Consumes({ "application/json" })
+	public void addEvent(Evenement e) {
+		em.persist(e);
+	}
 	
 	@POST
 	@Path("/addutilisateur")

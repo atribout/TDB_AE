@@ -38,6 +38,14 @@ function loadAccueil() {
 
 function loadEvenements() {
 	$("#Page").load("evenements.html", function() {
+		$("#BTCreateEvent").click(function() {
+			loadAddEvent();
+		});
+		$("#BTSubscribeEvent").click(function() {
+			loadSubscribeEvent();
+		});
+		$("#BTMyEvent").click(function() {
+			loadListEvents();
 	});
 	loadNavigation("Evenements");
 }
@@ -54,32 +62,20 @@ function loadReservation() {
 	loadNavigation("Réservation");
 }
 
-function loadMain() {
-	$("#Main").load("Main.html", function() {
-		$("#BTAddPerson").click(function() {
-			loadAddPerson();
-		});
-		$("#BTAddAddress").click(function() {
-			loadAddAddress();
-		});
-		$("#BTAssociate").click(function() {
-			loadAssociate();
-		});
-		$("#BTList").click(function() {
-			loadList();
-		});
-	});
-}
 
-function loadAddPerson() {
+function loadAddEvent() {
 	$("#ShowMessage").empty();
-	$("#Main").load("AddPerson.html", function() {
-		$("#BTValAddPerson").click(function() {
-			person = {};
-			person.firstName=$("#FirstName").val();
-			person.lastName=$("#LastName").val();		
-			invokePost("rest/addperson", person, "person was added", "failed to add a person");
-			loadMain();
+	$("#Main").load("AddEvent.html", function() {
+		$("#BTValAddEvent").click(function() {
+			event = {};
+			event.nom=$("#EventName").val();
+			event.description=$("#EventDescription").val();	
+			event.date=$("#EventDate").val();
+			event.time=$("#EventTime").val();
+			event.salle=$("#EventRoom").val();
+			event.asso_organisateur=$("#EventOrga").val();
+			invokePost("rest/addevent", event, "event was added", "failed to add an event");
+			loadEvenements();
 		});
 	});
 }

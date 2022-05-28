@@ -4,9 +4,6 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
-import java.sql.Time;
-import java.util.Date;
-
 @Entity
 public class Evenement {
 	
@@ -16,17 +13,17 @@ public class Evenement {
 
     private String nom;
     private String description;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
 
     @ManyToMany
     private Collection<Personne> participants ;
 
-    @ManyToMany
-    private Collection<Association> asso_organisateur;
+    @ManyToOne
+    private Association asso_organisateur;
     
-    @OneToMany
-    private Collection<Salle> salles;
+    @OneToOne
+    private Salle salle;
     
     
  
@@ -46,19 +43,19 @@ public class Evenement {
 		this.description = description;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public Time getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 
@@ -70,20 +67,20 @@ public class Evenement {
 		this.participants = participants;
 	}
 
-	public Collection<Association> getAsso_organisateur() {
+	public Association getAsso_organisateur() {
 		return asso_organisateur;
 	}
 
-	public void setAsso_organisateur(Collection<Association> asso_organisateur) {
+	public void setAsso_organisateur(Association asso_organisateur) {
 		this.asso_organisateur = asso_organisateur;
 	}
 
-	public Collection<Salle> getSalles() {
-		return salles;
+	public Salle getSalle() {
+		return salle;
 	}
 
-	public void setSalles(Collection<Salle> salles) {
-		this.salles = salles;
+	public void setSalle(Salle salle) {
+		this.salle = salle;
 	}
 	
 }
