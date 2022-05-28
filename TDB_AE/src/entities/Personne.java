@@ -1,4 +1,4 @@
-package main.java.entities;
+package entities;
 
 import java.util.Collection;
 
@@ -29,8 +29,7 @@ public class Personne {
     @ManyToMany(mappedBy= "acces")
     private Collection<Salle> salles_accessibles;
     
-    @OneToMany(mappedBy="owner", fetch = FetchType.EAGER)
-	private Adresse adresse;
+ 
     
     public Personne(){};
 
@@ -89,13 +88,6 @@ public class Personne {
 		this.salles_accessibles = salles_accessibles;
 	}
 
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
 
 	public String getMail() {
 		return mail;

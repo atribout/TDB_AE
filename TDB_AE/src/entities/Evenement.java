@@ -1,4 +1,4 @@
-package main.java.entities;
+package entities;
 
 import java.util.Collection;
 
@@ -22,8 +22,8 @@ public class Evenement {
     @ManyToOne
     private Association asso_organisateur;
     
-    @OneToOne
-    private Salle salle;
+    @ManyToMany
+    private Collection<Salle> salles;
     
     
  
@@ -75,12 +75,12 @@ public class Evenement {
 		this.asso_organisateur = asso_organisateur;
 	}
 
-	public Salle getSalle() {
-		return salle;
+	public Collection<Salle> getSalle() {
+		return salles;
 	}
 
-	public void setSalle(Salle salle) {
-		this.salle = salle;
+	public void setSalle(Collection<Salle> salles) {
+		this.salles = salles;
 	}
 	
 }

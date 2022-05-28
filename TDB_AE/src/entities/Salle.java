@@ -1,4 +1,4 @@
-package main.java.entities;
+package entities;
 
 import java.util.*;
 
@@ -15,7 +15,6 @@ public class Salle {
 	private int capacite;
 	private boolean projecteur;
 	private boolean accees_demandé;
-	private TypeSalle type;
 	
 	
 	@ManyToMany(mappedBy = "salles")
@@ -23,7 +22,7 @@ public class Salle {
 	
 	
 	@ManyToMany
-	private Collection<Personne> accees;
+	private Collection<Personne> acces;
 	
 	public String getBatiment() {
 		return batiment;
@@ -43,12 +42,7 @@ public class Salle {
 	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
-	public TypeSalle getType() {
-		return type;
-	}
-	public void setType(TypeSalle type) {
-		this.type = type;
-	}
+
 	public boolean isProjecteur() {
 		return projecteur;
 	}
@@ -62,10 +56,10 @@ public class Salle {
 		this.activite = activite;
 	}
 	public Collection<Personne> getAccees() {
-		return accees;
+		return acces;
 	}
 	public void setAccees(Collection<Personne> accees) {
-		this.accees = accees;
+		this.acces = accees;
 	}
 	public boolean isAccees_demandé() {
 		return accees_demandé;

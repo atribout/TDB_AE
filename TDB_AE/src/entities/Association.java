@@ -1,4 +1,4 @@
-package main.java.entities;
+package entities;
 
 import java.util.*;
 
@@ -26,7 +26,7 @@ public class Association {
 	@ManyToMany
 	private List<Personne> membres;
 	
-	@ManyToMany(mappedBy = "asso_organisatrice")
+	@OneToMany
 	private Collection<Evenement> events;
 
 	public String getDescription() {

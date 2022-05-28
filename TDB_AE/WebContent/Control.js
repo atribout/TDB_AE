@@ -44,10 +44,11 @@ function loadEvenements() {
 		$("#BTSubscribeEvent").click(function() {
 			loadSubscribeEvent();
 		});
-		$("#BTMyEvent").click(function() {
+		$("#BTMyEvents").click(function() {
 			loadListEvents();
+		});
+		loadNavigation("Evenements");
 	});
-	loadNavigation("Evenements");
 }
 
 function loadForum() {
@@ -65,7 +66,7 @@ function loadReservation() {
 
 function loadAddEvent() {
 	$("#ShowMessage").empty();
-	$("#Main").load("AddEvent.html", function() {
+	$("#Page").load("AddEvent.html", function() {
 		$("#BTValAddEvent").click(function() {
 			event = {};
 			event.nom=$("#EventName").val();

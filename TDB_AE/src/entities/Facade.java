@@ -28,7 +28,7 @@ public class Facade {
 	@POST
 	@Path("/addutilisateur")
     @Consumes({ "application/json" })
-	public void addUtilisateur(Utilisateur u) {
+	public void addUtilisateur(Personne u) {
 		System.out.println("coucou");
 		em.persist(u);
 	}
@@ -36,8 +36,8 @@ public class Facade {
 	@GET
 	@Path("/loginutilisateur")
     @Produces({ "application/json" })
-	public Utilisateur loginUtilisateur() {
-		return (Utilisateur) em.createQuery("from Utilisateur", Utilisateur.class);	
+	public Personne loginUtilisateur() {
+		return (Personne) em.createQuery("from Utilisateur", Personne.class);	
 	}
 
 }
