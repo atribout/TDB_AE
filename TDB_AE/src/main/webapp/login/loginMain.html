@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style/style_login.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="login/Control_login2.js"></script>
+	<script src="login/js.cookie.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 <div class="title-page">
 	<h1>TDB AEn7</h1>
 </div>
-  <div class="form" action="servlet1">
+  <div class="form">
     <form class="register-form">
       <input id="create-username" name="name" type="text" placeholder="username"/>
       <input id="create-password" name="password" type="text" placeholder="password"/>
@@ -22,9 +23,9 @@
       <button name="create-button" type="button" id="BTRegisterUtilisateur">create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
-    <form class="login-form">
-      <input id="login-username" type="text" placeholder="username" name="login-username"/>
-      <input id="login-password" type="text" placeholder="password" name="login-password"/>
+    <form class="login-form" Method="post" action="servlet1">
+      <input id="login-username" name="name" type="text" placeholder="username" name="login-username"/>
+      <input id="login-password" name="password" type="text" placeholder="password" name="login-password"/>
       <button name="login-button" type="button" id="BTConnexionUtilisateur">login</button>
       <label id="RegisterErrorMsg"></label>
       <p class="message">Not registered? <a href="#">Create an account</a></p>

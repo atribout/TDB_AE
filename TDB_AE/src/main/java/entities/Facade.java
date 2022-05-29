@@ -11,6 +11,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import entities.Personne;
+
 @Singleton
 @Path("/")
 public class Facade {
@@ -21,16 +23,21 @@ public class Facade {
 	@POST
 	@Path("/addutilisateur")
     @Consumes({ "application/json" })
-	public void addUtilisateur(Utilisateur u) {
+	public void addUtilisateur(Personne u) {
 		System.out.println("coucou");
 		em.persist(u);
 	}
 	
-	@GET
+	@POST
 	@Path("/loginutilisateur")
-    @Produces({ "application/json" })
-	public Utilisateur loginUtilisateur() {
-		return (Utilisateur) em.createQuery("from Utilisateur", Utilisateur.class);	
+    @Consumes({ "application/json" })
+	public Personne verifierMembre(Personne u) {
+		String password = u.getMdp();
+		String username = u.getLogin();
+		Personne q = em.createQuery("SELECT m FROM Personne m where login=:username AND mdp=:password", Personne.class).setParameter("username", username).setParameter("password", password).getSingleResult();
+		return q;
 	}
+	
+	
 
 }

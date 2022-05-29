@@ -14,16 +14,18 @@ $(document).ready(function() {
 	$('#BTConnexionUtilisateur').on('click', function() {
 		var loginUsernameEntry = $("#login-username").val();
 		var loginPasswordEntry = $("#login-password").val();
-		if (loginUsernameEntry == account[0] && loginPasswordEntry == account[1]) {
-			console.log("Current Username " + account[0]);
-			console.log("Current Password " + account[1]);
-			console.log("Logged In");
-		} else if (loginUsernameEntry == loginUsernameAdmin && loginPasswordEntry == loginPasswordAdmin) {
-				location.replace("index.html");
+
+		if (loginUsernameEntry == loginUsernameAdmin && loginPasswordEntry == loginPasswordAdmin) {
+			Cookies.set('sessionMembre', 'admin');
+			location.replace("tdb/index.html");
 		} else {
-			console.log("Attempted Username " + loginUsernameEntry);
-			console.log("Attempted Password " + loginPasswordEntry);
-			console.log("Login Falied");
+			utilisateur = {};
+			utilisateur.login = loginUsernameEntry;
+			utilisateur.mdp = loginPasswordEntry;
+			user = invokeUser("rest/loginutilisateur",utilisateur,"failed to login", function(response) {
+				Cookies.set('sessionMembre', loginUsernameEntry, { expires: 7, path: '/' });
+				location.replace("tdb/index.html");
+			});
 		};
 	});
   
@@ -81,16 +83,14 @@ $(document).ready(function() {
     
 		account = [createUsername, createPassword];
 		
-		
-		
 		console.log("Account Username " + account[0]);
 		console.log("Account Password " + account[1]);
     
 		if(createUsernameValid == true && createPasswordValid == true && createEmailValid == true) {
 		
 		utilisateur = {};
-		utilisateur.username = account[0];
-		utilisateur.password = account[1];
+		utilisateur.login = account[0];
+		utilisateur.mdp = account[1];
 		
       $('form').animate({
 			height: "toggle",
@@ -109,25 +109,6 @@ $(document).ready(function() {
 	});
 });
 
-function loadRegister() {
-	$("#pageBox").load("login/loginRegister.html", function() {
-		$("#BTRetour").click(function() {
-			loadLoginBtn();
-		});
-		$("#BTRegisterUtilisateur").click(function() {
-			utilisateur = {};
-			utilisateur.prenom=$("#FirstName").val();
-			utilisateur.nom=$("#LastName").val();
-			if ($("#Mdp") != $("#MdpConfirm")) {
-				$("#RegisterErrorMsg").text("Les mots de passes ne correspondent pas !");
-			} else {
-				utilisateur.setMdp("#Mdp");
-			}
-			invokePost("rest/addutilisateur", utilisateur, "L'utilisateur a été ajouté'", "Erreur Ajout utilisateur");
-		});
-	});
-}
-
 function invokePost(url, data, successMsg, failureMsg) {
 	jQuery.ajax({
 	    url: url,
@@ -138,6 +119,20 @@ function invokePost(url, data, successMsg, failureMsg) {
 	    success: function (response) {
 	    	$("#RegisterErrorMsg").text(successMsg);
 	    },
+	    error: function (response) {
+	    	$("#RegisterErrorMsg").text(failureMsg);
+	    }
+	});
+}
+
+function invokeUser(url, data, failureMsg, responseHandler) {
+	jQuery.ajax({
+	    url: url,
+	    type: "POST",
+	    data: JSON.stringify(data),
+	    dataType: "json",
+	    contentType: "application/json; charset=utf-8",
+	    success: responseHandler,
 	    error: function (response) {
 	    	$("#RegisterErrorMsg").text(failureMsg);
 	    }
