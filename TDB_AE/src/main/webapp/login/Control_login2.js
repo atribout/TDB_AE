@@ -20,8 +20,8 @@ $(document).ready(function() {
 			location.replace("tdb/index.html");
 		} else {
 			utilisateur = {};
-			utilisateur.login = loginUsernameEntry;
-			utilisateur.mdp = loginPasswordEntry;
+			utilisateur.username = loginUsernameEntry;
+			utilisateur.password = loginPasswordEntry;
 			user = invokeUser("rest/loginutilisateur",utilisateur,"failed to login", function(response) {
 				Cookies.set('sessionMembre', loginUsernameEntry, { expires: 7, path: '/' });
 				location.replace("tdb/index.html");
@@ -89,8 +89,8 @@ $(document).ready(function() {
 		if(createUsernameValid == true && createPasswordValid == true && createEmailValid == true) {
 		
 		utilisateur = {};
-		utilisateur.login = account[0];
-		utilisateur.mdp = account[1];
+		utilisateur.username = account[0];
+		utilisateur.password = account[1];
 		
       $('form').animate({
 			height: "toggle",

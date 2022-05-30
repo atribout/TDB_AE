@@ -8,26 +8,44 @@ import javax.persistence.*;
 public class Association {
 	
 	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)  
+	private Long id;
+	
 	private String nom;
 	
 	private String description;
 	
-	//Bureau bureau;
-	//Un seul role de president par éleve
+	//Un seul role de president par eleve
 	@OneToOne
-	private Personne president;
+	private Utilisateur president;
 	
 	@OneToOne
-	private Personne tresorier;
+	private Utilisateur tresorier;
 	
 	@ManyToMany
-	private List<Personne> bureau;
+	private Collection<Utilisateur> bureau;
 	
 	@ManyToMany
-	private List<Personne> membres;
+	private Collection<Utilisateur> membres;
 	
 	@OneToMany
 	private Collection<Evenement> events;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
 	public String getDescription() {
 		return description;
@@ -37,35 +55,35 @@ public class Association {
 		this.description = description;
 	}
 
-	public Personne getPresident() {
+	public Utilisateur getPresident() {
 		return president;
 	}
 
-	public void setPresident(Personne president) {
+	public void setPresident(Utilisateur president) {
 		this.president = president;
 	}
 
-	public Personne getTresorier() {
+	public Utilisateur getTresorier() {
 		return tresorier;
 	}
 
-	public void setTresorier(Personne tresorier) {
+	public void setTresorier(Utilisateur tresorier) {
 		this.tresorier = tresorier;
 	}
 
-	public List<Personne> getBureau() {
+	public Collection<Utilisateur> getBureau() {
 		return bureau;
 	}
 
-	public void setBureau(List<Personne> bureau) {
+	public void setBureau(Collection<Utilisateur> bureau) {
 		this.bureau = bureau;
 	}
 
-	public List<Personne> getMembres() {
+	public Collection<Utilisateur> getMembres() {
 		return membres;
 	}
 
-	public void setMembres(List<Personne> membres) {
+	public void setMembres(Collection<Utilisateur> membres) {
 		this.membres = membres;
 	}
 

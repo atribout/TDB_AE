@@ -17,16 +17,22 @@ public class Evenement {
     private String time;
 
     @ManyToMany
-    private Collection<Personne> participants ;
+    Collection<Utilisateur> participants ;
 
     @ManyToOne
     private Association asso_organisateur;
     
     @ManyToMany
     private Collection<Salle> salles;
-    
-    
- 
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -59,11 +65,11 @@ public class Evenement {
 		this.time = time;
 	}
 
-	public Collection<Personne> getParticipants() {
+	public Collection<Utilisateur> getParticipants() {
 		return participants;
 	}
 
-	public void setParticipants(Collection<Personne> participants) {
+	public void setParticipants(Collection<Utilisateur> participants) {
 		this.participants = participants;
 	}
 
@@ -75,11 +81,11 @@ public class Evenement {
 		this.asso_organisateur = asso_organisateur;
 	}
 
-	public Collection<Salle> getSalle() {
+	public Collection<Salle> getSalles() {
 		return salles;
 	}
 
-	public void setSalle(Collection<Salle> salles) {
+	public void setSalles(Collection<Salle> salles) {
 		this.salles = salles;
 	}
 	

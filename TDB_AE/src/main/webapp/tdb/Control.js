@@ -79,3 +79,46 @@ function loadMain() {
 		});
 	});
 }
+
+function loadAddEvent() {
+	$("#ShowMessage").empty();
+	$("#Page").load("AddEvent.html", function() {
+		$("#BTValAddEvent").click(function() {
+			event = {};
+			event.nom=$("#EventName").val();
+			event.description=$("#EventDescription").val();	
+			event.date=$("#EventDate").val();
+			event.time=$("#EventTime").val();
+			event.salle("#EventRoom").val();
+			event.asso_organisateur=$("#EventOrga").val();
+			invokePost("rest/addevent", event, "event was added", "failed to add an event");
+			loadEvenements();
+		});
+	});
+}
+
+function invokePost(url, data, successMsg, failureMsg) {
+	jQuery.ajax({
+	    url: url,
+	    type: "POST",
+	    data: JSON.stringify(data),
+	    dataType: "json",
+	    contentType: "application/json; charset=utf-8",
+	    success: function (response) {
+	    	$("#ShowMessage").text(successMsg);
+	    },
+	    error: function (response) {
+	    	$("#ShowMessage").text(failureMsg);
+	    }
+	});
+}
+function invokeGet(url, failureMsg, responseHandler) {
+	jQuery.ajax({
+	    url: url,
+	    type: "GET",
+	    success: responseHandler,
+	    error: function (response) {
+	    	$("#ShowMessage").text(failureMsg);
+	    }
+	});
+}
